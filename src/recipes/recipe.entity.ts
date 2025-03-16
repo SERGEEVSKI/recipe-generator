@@ -1,5 +1,6 @@
+import { Ingredient } from '../ingredients/ingredient.entity';
 import { User } from '../users/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity()
 export class Recipe {
@@ -12,9 +13,12 @@ export class Recipe {
   @Column()
   description: string;
 
-  @OneToOne(() => User)
-  @JoinColumn()
+  @ManyToOne(() => User)
   creator: User
+
+  @ManyToMany(() => Ingredient)
+  @JoinTable()
+  ingredients: Ingredient
 
   @CreateDateColumn()
   created_at: Date;
