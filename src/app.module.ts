@@ -6,7 +6,6 @@ import { UsersModule } from './users/users.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { RecipesModule } from './recipes/recipes.module';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
